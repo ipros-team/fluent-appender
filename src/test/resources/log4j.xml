@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration PUBLIC "-//LOGGER" "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+  <appender name="FLUENTD" class="com.github.toyama0919.logger.sender.appender.FluentAppender">
+    <param name="Tag" value="someproject" />
+    <param name="Label" value="batchapp" />
+    <param name="Host" value="localhost" />
+    <param name="Port" value="24224" />
+    <param name="AddHostname" value="true" />
+    <param name="AddTag" value="false" />
+    <param name="Stage" value="staging" />
+  </appender>
+
+  <appender name="MAP" class="com.github.toyama0919.logger.sender.appender.FluentAppender">
+    <param name="Tag" value="someproject" />
+    <param name="Label" value="batchapp" />
+    <param name="Host" value="localhost" />
+    <param name="Port" value="24224" />
+    <param name="Stage" value="production" />
+  </appender>
+
+  <root>
+    <priority value="info" />
+    <appender-ref ref="FLUENTD" />
+  </root>
+
+  <logger additivity="false" name="MAP">
+    <level value="info"/>
+    <appender-ref ref="MAP"/>
+  </logger>
+</log4j:configuration>
