@@ -1,4 +1,5 @@
 apply plugin: 'java'
+apply plugin: 'maven'
 apply plugin: 'eclipse'
 
 repositories {
@@ -11,13 +12,3 @@ dependencies {
     testCompile 'junit:junit:4.11'
 }
 
-apply plugin: 'maven'
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            repository(url: "file://" + System.getenv()['HOME'] + "/.m2/repository")
-            pom.version = '1.0.3'
-            pom.groupId = 'com.github.toyama0919'
-        }
-    }
-}
