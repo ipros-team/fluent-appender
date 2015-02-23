@@ -1,7 +1,6 @@
 # directory
 /bin/
 /build/
-/gradle/
 /.gradle/
 /.settings/
 
